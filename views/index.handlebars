@@ -1,0 +1,54 @@
+<div class="container">
+    <h1><i class="fas fa-hamburger"></i> Eat-Da-Burger! <i class="fas fa-hamburger"></i></h1>
+
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="collection col s4" id="burgers">
+            <h3>Devour a Burger</h2>
+
+                {{#each burger}}
+                {{#unless devoured}}
+                {{> burger-block devour=false}}
+                {{/unless}}
+                {{/each}}
+
+
+        </div>
+        <div class="col s2"></div>
+
+        <div class="collection col s4" id="devoured-burgers">
+            <h3>Burgers Devoured</h2>
+
+                {{#each burger}}
+                {{#if devoured}}
+                {{> burger-block devour=true}}
+                {{/if}}
+                {{/each}}
+
+        </div>
+        <div class="col s1"></div>
+
+    </div>
+
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s6">
+            <div class="input-field">
+                <input placeholder="Enter a Burger You Want to Eat and Begin Devouring" id="burger-name" type="text">
+            </div>
+
+            <div id="burger-validation">
+                Please enter a burger name.
+            </div>
+
+        </div>
+        <div class="col s3"></div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col s5"></div>
+        <button class="waves-effect waves-light btn col s2" id="submit-burger">Begin Devouring</button>
+
+    </div>

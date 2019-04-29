@@ -1,0 +1,12 @@
+<p class="collection-item">
+
+    {{burger_name}}
+
+    {{#unless devour}}
+    <span class="badge devour-burger red white-text" data-id="{{id}}">Devour Me</span>
+    {{else}}
+    <span class="badge remove-burger blue white-text" data-id="{{id}}">Remove</span>
+    {{/unless}}
+
+
+</p>

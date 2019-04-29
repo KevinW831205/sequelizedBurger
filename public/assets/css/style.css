@@ -1,0 +1,57 @@
+body{
+    background-image: url("../images/background.png");
+}
+
+.container{
+    background-color: white;
+    margin-top: 50px;
+    padding: 30px 20px 100px 20px;
+    border-radius: 30px;
+}
+
+h1{
+    text-align: center;
+    color: brown;
+    border-radius: 30px;
+    background-color: yellow;
+    padding: 5px 20px 10px 20px;
+    margin: 20px 100px 20px 100px;
+    
+}
+
+.collection{
+    font-size: 20px;
+    font-weight: bold;
+    border-color: black;
+    border-radius: 10px;
+}
+
+.badge{
+    border-radius: 5px;
+    transform: scale(1.2);
+}
+
+.badge:hover{
+    font-size: 20px !important;
+    transform: scale(1.2);
+}
+
+
+input[type="text"]{
+    text-align: center;
+}
+
+
+#burgers{
+    color: black;
+}
+
+#devoured-burgers{
+    color: darkgray !important;
+}
+
+#burger-validation{
+    color: red;
+    text-align: center;
+    display: none;
+}

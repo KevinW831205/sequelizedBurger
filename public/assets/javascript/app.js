@@ -1,5 +1,3 @@
-// add validation
-
 
 $(function () {
 
@@ -61,7 +59,3 @@ $(function () {
 
 })
 
-// $('.devour-burger').hover(
-//     function () { $(this).addClass('') },
-//     function () { $(this).removeClass('hover') }
-// )

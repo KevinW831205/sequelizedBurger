@@ -17,14 +17,18 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Requiring our models for syncing
+var db = require("./models");
+
 // Add routes
 require("./routes/html-routes.js")(app);
 require("./routes/burger-api-routes.js")(app);
 
 
 
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function () {
-    // Log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + PORT);
+// Sync sequelize database and Start our server so that it can begin listening to client requests.
+db.sequelize.sync().then(function () {
+    app.listen(PORT, function () {
+        console.log("App listening on PORT " + PORT);
+    });
 });

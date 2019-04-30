@@ -21,19 +21,18 @@ module.exports = function (app) {
 
         db.Burger.findAll({}).then(function (data) {
 
-            //
+            // converting sequelize data into handlebars format
             var burgerArr = [];
             for (var i = 0; i < data.length; i++) {
                 burgerArr.push(data[i].dataValues)
             }
 
+            // render handlebars
             res.render("index", { burger: burgerArr });
 
         })
 
     });
 
-
-    //
 
 };

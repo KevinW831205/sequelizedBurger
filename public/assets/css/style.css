@@ -55,3 +55,10 @@ input[type="text"]{
     text-align: center;
     display: none;
 }
+
+#customer-validation{
+    color: red;
+    text-align: center;
+    display: none;
+}
+

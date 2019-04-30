@@ -3,6 +3,7 @@
 
 $(function () {
 
+    // initialize materialize components
     M.AutoInit();
 
     $(".devour-burger").on("click", function () {

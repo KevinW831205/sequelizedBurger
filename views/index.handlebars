@@ -2,8 +2,8 @@
     <h1><i class="fas fa-hamburger"></i> Eat-Da-Burger! <i class="fas fa-hamburger"></i></h1>
 
     <div class="row">
-        {{!-- <div class="col s1"></div> --}}
-        <div class="collection col s5" id="burgers">
+        <div class="col s1"></div>
+        <div class="collection col s4" id="burgers">
             <h3>Devour a Burger</h2>
 
                 {{#each burger}}
@@ -16,7 +16,7 @@
         </div>
         <div class="col s2"></div>
 
-        <div class="collection col s5" id="devoured-burgers">
+        <div class="collection col s4" id="devoured-burgers">
             <h3>Burgers Devoured</h2>
 
                 {{#each burger}}
@@ -26,13 +26,14 @@
                 {{/each}}
 
         </div>
-        {{!-- <div class="col s1"></div> --}}
+        <div class="col s1"></div>
 
     </div>
 
     <div class="row">
-        <div class="col s3"></div>
-        <div class="col s6">
+        <div class="col s1"></div>
+
+        <div class="col s4">　
             <div class="input-field">
                 <input placeholder="Enter a Burger You Want to Eat and Begin Devouring" id="burger-name" type="text">
             </div>
@@ -40,34 +41,40 @@
             <div id="burger-validation">
                 Please enter a burger name.
             </div>
-
         </div>
-        <div class="col s3"></div>
+
+        <div class="col s2"></div>
+
+
+        <div class="col s4">　
+            <div class="row">
+                <div class="input-field col s9">
+                    <input placeholder="Enter a Customer Name" id="customer-name" type="text">
+                </div>
+
+                <div class="input-field col s3">
+                    <button class="waves-effect waves-light btn" id="submit-customer">Submit
+                    </button>
+                </div>
+
+            </div>
+            <div id="burger-validation">
+                Please enter a burger name.
+            </div>
+        </div>
+        <div class="col s1"></div>
+
     </div>
 
     <div class="row">
-        <div class="col s5"></div>
+        <div class="col s2"></div>
         <button class="waves-effect waves-light btn col s2" id="submit-burger">Begin Devouring</button>
+        <div class="col s3"></div>
+
+        <button class="waves-effect waves-light btn col s4 blue darken-1">Edit Existing Customer</button>
+
+        {{!-- <button class="waves-effect waves-light btn col s2 " id="submit-customer">Submit</button> --}}
+
     </div>
 
-
-
-    <div class="row">
-        <div class="col s3"></div>
-        <div class="col s6">
-            <div class="input-field">
-                <input placeholder="Add a Customer" id="customer-name" type="text">
-            </div>
-
-            <div id="customer-validation">
-                Please enter a customer name.
-            </div>
-
-        </div>
-        <div class="col s3"></div>
-        <div class="row">
-            <div class="col s5"></div>
-            <button class="waves-effect waves-light btn col s2" id="submit-customer">Submit</button>
-        </div>
-
-    </div>
+</div>

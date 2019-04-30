@@ -11,7 +11,14 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function (app) {
-    app.get("/api/burger", function (req, res) {
-        console.log("2")
-    })
+    app.post("/api/burgers", function (req, res) {
+        
+        console.log(req.body)
+        db.Burger.create(req.body).then(function (dbPost) {
+            res.json(dbPost);
+        });
+    });
+
 };
+
+

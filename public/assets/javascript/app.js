@@ -39,7 +39,7 @@ $(function () {
         } else {
             // a burger was inputed
             // trims the input value and puts the value into the body of a post request and submits a post request to the api/burger route
-            var burgerName = { name: $("#burger-name").val().trim() }
+            var burgerName = { burger_name: $("#burger-name").val().trim() }
 
             $.ajax("api/burgers", {
                 type: "POST",

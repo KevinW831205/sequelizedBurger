@@ -1,5 +1,9 @@
 
+
+
 $(function () {
+
+    M.AutoInit();
 
     $(".devour-burger").on("click", function () {
         //clicking the devoured button grabs the data-id attribute and passes it into a put request

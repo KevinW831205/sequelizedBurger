@@ -1,12 +1,36 @@
-<p class="collection-item">
+<div class="collection-item">
+    <p>
 
-    {{burger_name}}
+        {{burger_name}}
+        {{#unless devour}}
+        <span class="badge devour-burger red white-text" data-id="{{id}}">Devour Me</span>
+        {{else}}
+        <span class="badge remove-burger blue white-text" data-id="{{id}}">Remove</span>
+        {{/unless}}
 
-    {{#unless devour}}
-    <span class="badge devour-burger red white-text" data-id="{{id}}">Devour Me</span>
-    {{else}}
-    <span class="badge remove-burger blue white-text" data-id="{{id}}">Remove</span>
+    </p>
+
+
+    {{#if CustomerId}}
+    <div>
+        Customer_name <button>Edit</button>
+    </div>
+    {{/if}}
+
+    {{#unless CustomerId}}
+    <div class="row">
+        <p class="col s4">
+            Customer
+        </p>
+        <div class="col s2"></div>
+        <select class="col s6 browser-default">
+            <option value="" disabled selected>Select a Customer</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+        </select>
+    </div>
     {{/unless}}
 
 
-</p>
+</div>

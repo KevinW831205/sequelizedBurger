@@ -27,6 +27,8 @@ require("./routes/burger-api-routes.js")(app);
 
 
 // Sync sequelize database and Start our server so that it can begin listening to client requests.
+
+//{ force: true }
 db.sequelize.sync().then(function () {
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);

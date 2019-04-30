@@ -5,23 +5,20 @@
         <div class="col s1"></div>
         <div class="collection col s4" id="burgers">
             <h3>Devour a Burger</h2>
-
                 {{#each burger}}
                 {{#unless devoured}}
                 {{> burger-block devour=false}}
                 {{/unless}}
                 {{/each}}
 
-
         </div>
         <div class="col s2"></div>
 
         <div class="collection col s4" id="devoured-burgers">
             <h3>Burgers Devoured</h2>
-
                 {{#each burger}}
                 {{#if devoured}}
-                {{> burger-block devour=true}}
+                {{> burger-block devour=true customer=customer}}
                 {{/if}}
                 {{/each}}
 
@@ -34,10 +31,12 @@
         <div class="col s1"></div>
 
         <div class="col s4">　
-            <div class="input-field">
-                <input placeholder="Enter a Burger You Want to Eat and Begin Devouring" id="burger-name" type="text">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Enter a Burger You Want to Eat and Begin Devouring" id="burger-name"
+                        type="text">
+                </div>
             </div>
-
             <div id="burger-validation">
                 Please enter a burger name.
             </div>
@@ -58,8 +57,8 @@
                 </div>
 
             </div>
-            <div id="burger-validation">
-                Please enter a burger name.
+            <div id="customer-validation">
+                Please enter a customer name.
             </div>
         </div>
         <div class="col s1"></div>
@@ -71,10 +70,14 @@
         <button class="waves-effect waves-light btn col s2" id="submit-burger">Begin Devouring</button>
         <div class="col s3"></div>
 
-        <button class="waves-effect waves-light btn col s4 blue darken-1">Edit Existing Customer</button>
+        <button class="waves-effect waves-light btn col s4 blue darken-1" id="edit-customer">Edit Existing
+            Customer</button>
 
         {{!-- <button class="waves-effect waves-light btn col s2 " id="submit-customer">Submit</button> --}}
 
     </div>
 
 </div>
+{{#each customer}}
+<p value="{{id}}">{{customer_name}}</p>
+{{/each}}

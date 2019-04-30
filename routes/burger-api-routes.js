@@ -17,8 +17,8 @@ module.exports = function (app) {
 
         //obtains burger from body of request and creates it in db.Burgers model
 
-        db.Burger.create(req.body).then(function (dbPost) {
-            res.json(dbPost);
+        db.Burger.create(req.body).then(function (result) {
+            res.json(result);
         });
     });
 
@@ -28,16 +28,15 @@ module.exports = function (app) {
         // obtain id from request parameter and updates devoured to true where id is same in db.Burgers model
 
         db.Burger.update(
-            {
-                devoured: true
-            },
+
+            req.body,
             {
                 where: {
                     id: req.params.id
                 }
             }
-        ).then(function (dbPost) {
-            res.json(dbPost);
+        ).then(function (result) {
+            res.json(result);
         });
 
     });
@@ -53,10 +52,20 @@ module.exports = function (app) {
                     id: req.params.id
                 }
             }
-        ).then(function (dbPost) {
-            res.json(dbPost);
+        ).then(function (result) {
+            res.json(result);
         });
 
+    });
+
+    app.post("/api/customers", function (req, res) {
+        // adding a customer
+
+        // obtains customer from body of request and creates it in db.Customer model
+
+        db.Customer.create(req.body).then(function (result) {
+            res.json(result);
+        });
     });
 
 

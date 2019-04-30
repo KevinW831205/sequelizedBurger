@@ -8,4 +8,3 @@ UPDATE burgers
 SET CustomerId = 1
 WHERE id = 1;
 
-DROP TABLE burgers;

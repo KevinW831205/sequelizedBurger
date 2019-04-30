@@ -8,7 +8,8 @@
 
         {{#if CustomerId}}
         <div>
-            <span>Customer_name <button class="waves-effect waves-light btn blue darken-1">Edit</button></span>
+            <span class="customerName" data-customerid={{CustomerId}}></span> <button
+                class="waves-effect waves-light btn blue darken-1">Edit</button>
         </div>
         {{/if}}
 
@@ -19,9 +20,9 @@
                 <select class="browser-default customersList " data-burgerid="{{id}}">
                     <option value="" disabled selected>Select a Customer</option>
 
-                    {{#each customer}}
+                    {{!-- {{#each customer}}
                     <option value="{{id}}">{{customer_name}}</option>
-                    {{/each}}
+                    {{/each}} --}}
                 </select>
             </p>
         </div>
@@ -34,7 +35,8 @@
         <span class="badge remove-burger grey white-text" data-id="{{id}}">Remove</span>
         {{#if CustomerId}}
         <div>
-            <span>Customer_name <button class="waves-effect waves-light btn blue darken-1">Edit</button></span>
+            <span class="customerName" data-customerid={{CustomerId}}></span><button
+                class="waves-effect waves-light btn blue darken-1">Edit</button>
         </div>
         {{/if}}
 
@@ -45,9 +47,9 @@
             </p>
             <select class="col s6 browser-default customersList" data-burgerId="{{id}}">
                 <option value="" disabled selected>Select a Customer</option>
-                {{#each customer}}
+                {{!-- {{#each customer}}
                 <option value="{{id}}">{{customer_name}}</option>
-                {{/each}}
+                {{/each}} --}}
             </select>
         </div>
         {{/unless}}

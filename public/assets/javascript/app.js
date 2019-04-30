@@ -20,15 +20,27 @@ $(function () {
             $(".customersList").append(customer)
         }
 
+        $(".customerName").each(function () {
+            // console.log($(this).data("customerid"))
+            for (var i = 0; i < customerData.length; i++) {
+                if (customerData[i].id === $(this).data("customerid")) {
+                    $(this).text(customerData[i].customer_name + "(id="+customerData[i].id+") ")
+                }
+            }
+
+
+        });
+
     })
 
     $('.customersList').on('change', function () {
+
         customerId = $(this).val()
         burgerId = $(this).data("burgerid")
 
         $.ajax("api/burgers/" + burgerId, {
             type: "PUT",
-            data: {CustomerId: customerId}
+            data: { CustomerId: customerId }
         }).then(
             function () {
                 location.reload();
@@ -44,6 +56,7 @@ $(function () {
 
         $.ajax("api/burgers/" + ID, {
             type: "PUT",
+            data: { devoured: true }
         }).then(
             function () {
                 location.reload();

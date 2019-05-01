@@ -21,6 +21,16 @@ module.exports = function (app) {
         })
     });
 
+    app.delete("/api/customers/:id", function (req, res) {
+
+        db.Customer.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+    });
+
+
 };
 
 

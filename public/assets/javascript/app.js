@@ -44,6 +44,22 @@ $(function () {
         })
     })
 
+    $(document).on("click", ".remove-customer", function () {
+
+        var ID = $(this).data("customerid")
+
+        $.ajax("api/customers/" + ID, {
+            type: "DELETE",
+        }).then(
+            function () {
+                location.reload();
+            }
+        )
+
+
+    })
+
+
     $(document).on("click", ".edit-list-item", function () {
         customerId = $(this).data("customerid");
         burgerId = $(this).parent().data("burgerid")
@@ -179,6 +195,7 @@ $(function () {
 
         }
     });
+
 
 
 })

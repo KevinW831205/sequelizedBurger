@@ -9,8 +9,12 @@
         {{#if CustomerId}}
         <div>
             Order By: <span class="custName">{{Customer.dataValues.customer_name}} (id={{CustomerId}})</span>
-            <button class=" waves-effect waves-light btn blue darken-1 edit-customer"
-                data-burgerid="{{id}}">Edit</button>
+            <button class=" waves-effect waves-light btn blue darken-1 edit-customer dropdown-trigger"
+                data-target="edit-list-burger{{@index}}" data-burgerid="{{id}}">Edit</button>
+
+            <ul id='edit-list-burger{{@index}}' class='dropdown-content edit-list'>
+
+            </ul>
         </div>
         {{/if}}
 
@@ -37,8 +41,11 @@
         {{#if CustomerId}}
         <div>
             Devoured by: <span class="custName">{{Customer.dataValues.customer_name}} (id={{CustomerId}})</span>
-            <button class=" waves-effect waves-light btn blue darken-1 edit-customer"
-                data-burgerid="{{id}}">Edit</button>
+            <button class=" waves-effect waves-light btn blue darken-1 edit-customer dropdown-trigger"
+                data-target="edit-list-devour{{@index}}" data-burgerid="{{id}}">Edit</button>
+            <ul id='edit-list-devour{{@index}}' class='dropdown-content edit-list'>
+            </ul>
+
         </div>
         {{/if}}
 
@@ -57,7 +64,6 @@
         {{/unless}}
 
         {{/unless}}
-
-
     </p>
+
 </div>

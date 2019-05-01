@@ -66,21 +66,21 @@ $(function () {
         location.reload();
     });
 
-    $(".edit-customer").on("click", function () {
+    // $(".edit-customer").on("click", function () {
 
-        // Once a customer is to be edited update database to not associate burger with customer and reload
+    //     // Once a customer is to be edited update database to not associate burger with customer and reload
 
-        burgerId = $(this).data("burgerid")
+    //     burgerId = $(this).data("burgerid")
 
-        $.ajax("api/burgers/" + burgerId, {
-            type: "PUT",
-            data: { CustomerId: null }
-        }).then(
-            function () {
-                location.reload();
-            }
-        )
-    })
+    //     $.ajax("api/burgers/" + burgerId, {
+    //         type: "PUT",
+    //         data: { CustomerId: null }
+    //     }).then(
+    //         function () {
+    //             location.reload();
+    //         }
+    //     )
+    // })
 
 
     $(".devour-burger").on("click", function () {

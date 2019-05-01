@@ -27,6 +27,16 @@ $(function () {
                 }
             }
         });
+
+        $(".edit-list").each(function () {
+            for (var i = 0; i < customerData.length; i++) {
+                var newli = $("<li>");
+                newli.text(customerData[i].customer_name + "(id=" + customerData[i].id + ")")
+                $(this).append(newli)
+
+            }
+        })
+
     })
 
     $.ajax("api/burgers", {
@@ -66,21 +76,6 @@ $(function () {
         location.reload();
     });
 
-    // $(".edit-customer").on("click", function () {
-
-    //     // Once a customer is to be edited update database to not associate burger with customer and reload
-
-    //     burgerId = $(this).data("burgerid")
-
-    //     $.ajax("api/burgers/" + burgerId, {
-    //         type: "PUT",
-    //         data: { CustomerId: null }
-    //     }).then(
-    //         function () {
-    //             location.reload();
-    //         }
-    //     )
-    // })
 
 
     $(".devour-burger").on("click", function () {

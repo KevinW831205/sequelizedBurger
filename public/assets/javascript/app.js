@@ -6,6 +6,11 @@ $(function () {
     // initialize materialize components
     M.AutoInit();
 
+    // var elem = document.querySelector('.edit-list');
+    // var instance = M.Dropdown.init(elem, {
+    //     constrainWidth: false,
+    // });
+
     // grabing customers data
     $.ajax("api/customers", {
         type: "GET",
@@ -32,11 +37,26 @@ $(function () {
             for (var i = 0; i < customerData.length; i++) {
                 var newli = $("<li>");
                 newli.text(customerData[i].customer_name + "(id=" + customerData[i].id + ")")
+                newli.addClass("edit-list-item")
+                newli.attr("data-customerid", customerData[i].id)
                 $(this).append(newli)
-
             }
         })
+    })
 
+    $(document).on("click", ".edit-list-item", function () {
+        customerId = $(this).data("customerid");
+        burgerId = $(this).parent().data("burgerid")
+
+        $.ajax("api/burgers/" + burgerId, {
+            type: "PUT",
+            data: { CustomerId: customerId }
+        }).then(
+            function () {
+                location.reload();
+            }
+        )
+        location.reload();
     })
 
     $.ajax("api/burgers", {

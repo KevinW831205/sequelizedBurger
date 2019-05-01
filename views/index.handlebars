@@ -70,7 +70,9 @@
         <button class="waves-effect waves-light btn col s2" id="submit-burger">Begin Devouring</button>
         <div class="col s3"></div>
 
-        <button class="waves-effect waves-light btn col s4 blue darken-1" id="edit-customer">Edit Existing
+        <button class="waves-effect waves-light btn col s4 blue darken-1 modal-trigger" id="edit-customer"
+            href="#customer-modal">View and
+            Edit Existing
             Customer</button>
 
         {{!-- <button class="waves-effect waves-light btn col s2 " id="submit-customer">Submit</button> --}}
@@ -78,6 +80,35 @@
     </div>
 
 </div>
+
+<div id="customer-modal" class="modal">
+    <div class="modal-content">
+        <h4>Customers</h4>
+
+        {{#each customer}}
+        <p>{{customer_name}}</p>
+
+        <ul class="customer-orders" data-customerid="{{id}}">
+        </ul>
+
+        {{!-- code working for nested each but if check requires more work
+        <ul> 
+            {{#each ../burger}}
+            {{#if Customer.dataValues.id == }}
+            <li>{{Customer.dataValues.customer_name}}
+                (id={{Customer.dataValues.id}})</li>
+            {{/if}}
+            {{/each}}
+        </ul> --}}
+
+        {{/each}}
+
+    </div>
+</div>
+
+
+
+{{!-- 
 {{#each customer}}
 <p value="{{id}}">{{customer_name}}</p>
-{{/each}}
+{{/each}} --}}

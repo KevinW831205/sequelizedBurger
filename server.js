@@ -26,8 +26,6 @@ require("./routes/html-routes.js")(app);
 require("./routes/burger-api-routes.js")(app);
 require("./routes/customer-api-routes.js")(app);
 
-
-
 // Sync sequelize database and Start our server so that it can begin listening to client requests.
 
 //{ force: true }

@@ -8,8 +8,8 @@
 
         {{#if CustomerId}}
         <div>
-            <span class="customerName" data-customerid={{CustomerId}}></span> <button
-                class="waves-effect waves-light btn blue darken-1">Edit</button>
+            Order By: {{Customer.dataValues.customer_name}} (id={{CustomerId}}) <button
+                class=" waves-effect waves-light btn blue darken-1 edit-customer" data-burgerid="{{id}}">Edit</button>
         </div>
         {{/if}}
 
@@ -35,8 +35,8 @@
         <span class="badge remove-burger grey white-text" data-id="{{id}}">Remove</span>
         {{#if CustomerId}}
         <div>
-            <span class="customerName" data-customerid={{CustomerId}}></span><button
-                class="waves-effect waves-light btn blue darken-1">Edit</button>
+            Devoured by: {{Customer.dataValues.customer_name}} (id={{CustomerId}}) <button
+                class=" waves-effect waves-light btn blue darken-1 edit-customer" data-burgerid="{{id}}">Edit</button>
         </div>
         {{/if}}
 

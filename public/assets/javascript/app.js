@@ -6,34 +6,51 @@ $(function () {
     // initialize materialize components
     M.AutoInit();
 
+    // grabing customers data
     $.ajax("api/customers", {
         type: "GET",
     }).then(function (customerData) {
-
-
+        // Create dropdown select customers
         for (var i = 0; i < customerData.length; i++) {
             var customer = $("<option>")
             customer.attr("value", customerData[i].id)
             customer.text(customerData[i].customer_name + " (id=" + customerData[i].id + ")");
 
-            console.log(customer)
             $(".customersList").append(customer)
         }
 
+        //making customerName appear
         $(".customerName").each(function () {
-            // console.log($(this).data("customerid"))
             for (var i = 0; i < customerData.length; i++) {
                 if (customerData[i].id === $(this).data("customerid")) {
-                    $(this).text(customerData[i].customer_name + "(id="+customerData[i].id+") ")
+                    $(this).text(customerData[i].customer_name + "(id=" + customerData[i].id + ") ")
                 }
             }
-
-
         });
+    })
+
+    $.ajax("api/burgers", {
+        type: "GET",
+    }).then(function (burgerData) {
+
+        console.log(burgerData)
+
+        $(".customer-orders").each(function () {
+            for (var i = 0; i < burgerData.length; i++) {
+                if (burgerData[i].CustomerId == $(this).data("customerid")) {
+                    var burger = $("<li>");
+                    burger.text(burgerData[i].burger_name)
+                    $(this).append(burger);
+                }
+            }
+        })
 
     })
 
+
     $('.customersList').on('change', function () {
+
+        // Once a customer is selected update database and reload
 
         customerId = $(this).val()
         burgerId = $(this).data("burgerid")
@@ -48,6 +65,22 @@ $(function () {
         )
         location.reload();
     });
+
+    $(".edit-customer").on("click", function () {
+
+        // Once a customer is to be edited update database to not associate burger with customer and reload
+
+        burgerId = $(this).data("burgerid")
+
+        $.ajax("api/burgers/" + burgerId, {
+            type: "PUT",
+            data: { CustomerId: null }
+        }).then(
+            function () {
+                location.reload();
+            }
+        )
+    })
 
 
     $(".devour-burger").on("click", function () {

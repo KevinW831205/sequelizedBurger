@@ -12,6 +12,16 @@ var db = require("../models");
 // =============================================================
 module.exports = function (app) {
 
+    app.get("/api/burgers", function (req, res) {
+
+        db.Burger.findAll({
+            include: [db.Customer]
+        }).then(function (burgerData) {
+            res.json(burgerData)
+        })
+
+    })
+
     app.post("/api/burgers", function (req, res) {
         // adding a burger to be devoured
 
@@ -70,5 +80,3 @@ module.exports = function (app) {
 
 
 };
-
-

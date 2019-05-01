@@ -19,7 +19,10 @@ module.exports = function (app) {
 
         //grab all burgers from database and pass it into handlebars
 
-        db.Burger.findAll({}).then(function (burgerData) {
+        db.Burger.findAll({
+            include: [db.Customer]
+        },
+        ).then(function (burgerData) {
 
             // converting sequelize data into handlebars format
             var burgerArr = [];
@@ -27,42 +30,26 @@ module.exports = function (app) {
                 burgerArr.push(burgerData[i].dataValues)
             }
 
-            // render handlebars
 
+            db.Customer.findAll({}).then(function (customerData) {
 
-            res.render("index",
-                {
-                    burger: burgerArr,
-                });
+                var customerArr = [];
+                for (var i = 0; i < customerData.length; i++) {
+                    customerArr.push(customerData[i].dataValues)
+                }
+
+                // console.log(burgerArr[0].Customer)
+                res.render("index",
+                    {
+                        burger: burgerArr,
+                        customer: customerArr
+                    });
+
+            })
 
         })
 
 
-        // db.Burger.findAll({}).then(function (burgerData) {
-
-        //     // converting sequelize data into handlebars format
-        //     var burgerArr = [];
-        //     for (var i = 0; i < burgerData.length; i++) {
-        //         burgerArr.push(burgerData[i].dataValues)
-        //     }
-
-        //     // render handlebars
-
-        //     db.Customer.findAll({}).then(function (customerData) {
-
-        //         var customerArr = [];
-        //         for (var i = 0; i < customerData.length; i++) {
-        //             customerArr.push(customerData[i].dataValues)
-        //         }
-
-        //         res.render("index",
-        //             {
-        //                 burger: burgerArr,
-        //                 customer: customerArr
-        //             });
-
-        //     })
-        // })
     });
 
 

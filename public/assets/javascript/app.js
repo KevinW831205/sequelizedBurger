@@ -63,8 +63,6 @@ $(function () {
         type: "GET",
     }).then(function (burgerData) {
 
-        console.log(burgerData)
-
         $(".customer-orders").each(function () {
             for (var i = 0; i < burgerData.length; i++) {
                 if (burgerData[i].CustomerId == $(this).data("customerid")) {

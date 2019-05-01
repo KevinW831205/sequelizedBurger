@@ -55,8 +55,6 @@ $(function () {
                 location.reload();
             }
         )
-
-
     })
 
 

@@ -19,8 +19,9 @@ module.exports = function (sequelize, DataTypes) {
         // A Post can't be created without an Author due to the foreign key constraint
         Burger.belongsTo(models.Customer, {
             foreignKey: {
-                onDelete: "cascade"
-            }
+                allowNull: true
+            },
+            onDelete: "cascade"
         });
     };
 

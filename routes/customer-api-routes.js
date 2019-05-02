@@ -32,6 +32,20 @@ module.exports = function (app) {
         });
     });
 
+    app.put("/api/customers/:id", function (req, res) {
+
+        db.Customer.update(
+            req.body,
+            {
+                where: {
+                    id: req.params.id
+                }
+            }
+        ).then(function (result) {
+            res.json(result);
+        });
+    });
+
 
 };
 

@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Asdflkjh1!",
+    "database": "burgerSequlize_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "username": "f5iiv3qyi6r8fds5",
+    "password": "x6kvzd9o7sb2j4jr",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

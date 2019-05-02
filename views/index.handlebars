@@ -87,12 +87,20 @@
 
         {{#each customer}}
         <div>
-            <h4><input class="browser-default customer-name" type="text" value="{{customer_name}}">
-                <button class="waves-effect waves-light btn col s4 blue darken-1 name-change" data-customerid="{{id}}"
-                    disabled="true">Save Changes</button>
-                <button class=" waves-effect waves-light btn col s4 red darken-1 remove-customer"
-                    data-customerid="{{id}}">remove</button>
-            </h4>
+            <div>
+                <h4>
+                    <input class="browser-default customer-name" type="text" value="{{customer_name}}">
+                    <button class="waves-effect waves-light btn col s4 blue darken-1 name-change"
+                        data-customerid="{{id}}" disabled="true">Save Changes</button>
+                    <button class=" waves-effect waves-light btn col s4 red darken-1 remove-customer"
+                        data-customerid="{{id}}">remove</button>
+                </h4>
+                <div class="customer-edit-validation">
+                    Customer Name Cannot be empty
+                </div>
+
+            </div>
+
             <p><strong>Orders:</strong></p>
             <ul class="customer-orders browser-default" data-customerid="{{id}}">
             </ul>

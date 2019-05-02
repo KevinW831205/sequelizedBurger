@@ -54,173 +54,183 @@ $(function () {
 
     $(document).on("click", ".name-change", function () {
 
-        var ID = $(this).data("customerid")
+        if ($(this).parent().children(".customer-name").val() === "") {
 
-        var name = $(this).parent().children(".customer-name").val()
+            $(this).parent().parent().children(".customer-edit-validation").show();
 
-        $(this).attr("disabled", true)
+        } else {
 
-        $.ajax("api/customers/" + ID, {
-            type: "PUT",
-            data: { customer_name: name }
+            $(this).parent().parent().children(".customer-edit-validation").hide();
 
-        }).then(
+            var ID = $(this).data("customerid")
+            var name = $(this).parent().children(".customer-name").val()
+
+            $(this).attr("disabled", true)
+
+            $.ajax("api/customers/" + ID, {
+                type: "PUT",
+                data: { customer_name: name }
+
+            }).then(
                 function () {
                     location.reload();
                 }
             )
 
-})
 
-$(document).on("click", ".remove-customer", function () {
-
-    var ID = $(this).data("customerid")
-
-    $.ajax("api/customers/" + ID, {
-        type: "DELETE",
-    }).then(
-        function () {
-            location.reload();
         }
-    )
-})
 
-
-$(document).on("click", ".edit-list-item", function () {
-    customerId = $(this).data("customerid");
-    burgerId = $(this).parent().data("burgerid")
-
-    $.ajax("api/burgers/" + burgerId, {
-        type: "PUT",
-        data: { CustomerId: customerId }
-    }).then(
-        function () {
-            location.reload();
-        }
-    )
-    location.reload();
-})
-
-$.ajax("api/burgers", {
-    type: "GET",
-}).then(function (burgerData) {
-
-    $(".customer-orders").each(function () {
-        for (var i = 0; i < burgerData.length; i++) {
-            if (burgerData[i].CustomerId == $(this).data("customerid")) {
-                var burger = $("<li>");
-                burger.text(burgerData[i].burger_name)
-                $(this).append(burger);
-            }
-        }
     })
 
-})
+    $(document).on("click", ".remove-customer", function () {
 
+        var ID = $(this).data("customerid")
 
-$(".customersList").on("change", function () {
-
-    // Once a customer is selected update database and reload
-
-    customerId = $(this).val()
-    burgerId = $(this).data("burgerid")
-
-    $.ajax("api/burgers/" + burgerId, {
-        type: "PUT",
-        data: { CustomerId: customerId }
-    }).then(
-        function () {
-            location.reload();
-        }
-    )
-    location.reload();
-});
-
-
-
-$(".devour-burger").on("click", function () {
-    //clicking the devoured button grabs the data-id attribute and passes it into a put request
-    var ID = $(this).data("id")
-
-    $.ajax("api/burgers/" + ID, {
-        type: "PUT",
-        data: { devoured: true }
-    }).then(
-        function () {
-            location.reload();
-        }
-    )
-});
-
-$(".remove-burger").on("click", function () {
-    //clicking the devoured button grabs the data-id attribute and passes it into a put request
-    var ID = $(this).data("id")
-
-    $.ajax("api/burgers/" + ID, {
-        type: "DELETE",
-    }).then(
-        function () {
-            location.reload();
-        }
-    )
-});
-
-$("#submit-burger").on("click", function (event) {
-
-    event.preventDefault();
-    // revalidate input
-    $("#burger-validation").hide()
-
-    if ($("#burger-name").val() == "") {
-        // if input is empty
-        $("#burger-validation").show()
-    } else {
-        // a burger was inputed
-        // trims the input value and puts the value into the body of a post request and submits a post request to the api/burgers route
-        var burgerName = { burger_name: $("#burger-name").val().trim() }
-
-        $.ajax("api/burgers", {
-            type: "POST",
-            data: burgerName
+        $.ajax("api/customers/" + ID, {
+            type: "DELETE",
         }).then(
             function () {
                 location.reload();
             }
         )
-
-        $("#burger-name").val("")
-
-    }
-});
+    })
 
 
-$("#submit-customer").on("click", function (event) {
+    $(document).on("click", ".edit-list-item", function () {
+        customerId = $(this).data("customerid");
+        burgerId = $(this).parent().data("burgerid")
 
-    event.preventDefault();
-    // revalidate input
-    $("#customer-validation").hide()
-
-    if ($("#customer-name").val() == "") {
-        // if input is empty
-        $("#customer-validation").show()
-    } else {
-        // a customer was inputed
-        // trims the input value and puts the value into the body of a post request and submits a post request to the api/customers route
-        var customerName = { customer_name: $("#customer-name").val().trim() }
-
-        $.ajax("api/customers", {
-            type: "POST",
-            data: customerName
+        $.ajax("api/burgers/" + burgerId, {
+            type: "PUT",
+            data: { CustomerId: customerId }
         }).then(
             function () {
                 location.reload();
             }
         )
+        location.reload();
+    })
 
-        $("#customer-name").val("")
+    $.ajax("api/burgers", {
+        type: "GET",
+    }).then(function (burgerData) {
 
-    }
-});
+        $(".customer-orders").each(function () {
+            for (var i = 0; i < burgerData.length; i++) {
+                if (burgerData[i].CustomerId == $(this).data("customerid")) {
+                    var burger = $("<li>");
+                    burger.text(burgerData[i].burger_name)
+                    $(this).append(burger);
+                }
+            }
+        })
+
+    })
+
+
+    $(".customersList").on("change", function () {
+
+        // Once a customer is selected update database and reload
+
+        customerId = $(this).val()
+        burgerId = $(this).data("burgerid")
+
+        $.ajax("api/burgers/" + burgerId, {
+            type: "PUT",
+            data: { CustomerId: customerId }
+        }).then(
+            function () {
+                location.reload();
+            }
+        )
+        location.reload();
+    });
+
+
+
+    $(".devour-burger").on("click", function () {
+        //clicking the devoured button grabs the data-id attribute and passes it into a put request
+        var ID = $(this).data("id")
+
+        $.ajax("api/burgers/" + ID, {
+            type: "PUT",
+            data: { devoured: true }
+        }).then(
+            function () {
+                location.reload();
+            }
+        )
+    });
+
+    $(".remove-burger").on("click", function () {
+        //clicking the devoured button grabs the data-id attribute and passes it into a put request
+        var ID = $(this).data("id")
+
+        $.ajax("api/burgers/" + ID, {
+            type: "DELETE",
+        }).then(
+            function () {
+                location.reload();
+            }
+        )
+    });
+
+    $("#submit-burger").on("click", function (event) {
+
+        event.preventDefault();
+        // revalidate input
+        $("#burger-validation").hide()
+
+        if ($("#burger-name").val() == "") {
+            // if input is empty
+            $("#burger-validation").show()
+        } else {
+            // a burger was inputed
+            // trims the input value and puts the value into the body of a post request and submits a post request to the api/burgers route
+            var burgerName = { burger_name: $("#burger-name").val().trim() }
+
+            $.ajax("api/burgers", {
+                type: "POST",
+                data: burgerName
+            }).then(
+                function () {
+                    location.reload();
+                }
+            )
+
+            $("#burger-name").val("")
+
+        }
+    });
+
+
+    $("#submit-customer").on("click", function (event) {
+
+        event.preventDefault();
+        // revalidate input
+        $("#customer-validation").hide()
+
+        if ($("#customer-name").val() == "") {
+            // if input is empty
+            $("#customer-validation").show()
+        } else {
+            // a customer was inputed
+            // trims the input value and puts the value into the body of a post request and submits a post request to the api/customers route
+            var customerName = { customer_name: $("#customer-name").val().trim() }
+
+            $.ajax("api/customers", {
+                type: "POST",
+                data: customerName
+            }).then(
+                function () {
+                    location.reload();
+                }
+            )
+
+            $("#customer-name").val("")
+
+        }
+    });
 
 
 

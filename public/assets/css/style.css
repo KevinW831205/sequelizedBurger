@@ -70,5 +70,8 @@ input[type="text"]{
     width: 250px !important;
 }
 
-.customer-orders{
+
+.customer-edit-validation{
+    color:red;
+    display:none;
 }

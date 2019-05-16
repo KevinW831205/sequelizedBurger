@@ -1,4 +1,4 @@
-# sequelizedBurger
+# Eat-Da-Burger
 
 An application that manages list of burgers and a list of customers. Allows burgers to be assigned to customers, and can change the state of the burger from not devoured to devoured.
 
@@ -17,3 +17,21 @@ The customer and burger data are stored in a mysql database using sequelize
 * User also has the option edit the customers name and delete a customer.
 
 * With the deletion of a customer Burgers associated with the customer are also removed.
+
+## Deployed Site:
+[Eat-Da-Burger](https://desolate-earth-44023.herokuapp.com/)
+
+## Screenshots
+![](/public/assets/images/screenshot1.PNG)
+
+![](/public/assets/images/screenshot2.PNG)
+
+## Technologies Used:
+
+* **Node & Express** - To create the server-side web application.
+
+* **Handlebars.js** - Template used to render the html pages.
+
+* **MySQL + Sequelize** - database and orm used to submit queries to the database.
+
+* **Materialize** - CSS framework used to create the frontend of the website.

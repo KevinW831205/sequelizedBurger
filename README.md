@@ -1,5 +1,8 @@
 # Eat-Da-Burger
 
+## Deployed Site:
+[https://desolate-earth-44023.herokuapp.com/](https://desolate-earth-44023.herokuapp.com/)
+
 An application that manages list of burgers and a list of customers. Allows burgers to be assigned to customers, and can change the state of the burger from not devoured to devoured.
 
 The customer and burger data are stored in a mysql database using sequelize
@@ -17,9 +20,6 @@ The customer and burger data are stored in a mysql database using sequelize
 * User also has the option edit the customers name and delete a customer.
 
 * With the deletion of a customer Burgers associated with the customer are also removed.
-
-## Deployed Site:
-[Eat-Da-Burger](https://desolate-earth-44023.herokuapp.com/)
 
 ## Screenshots
 ![](/public/assets/images/screenshot1.PNG)
